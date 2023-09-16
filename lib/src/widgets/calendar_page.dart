@@ -74,20 +74,20 @@ class CalendarPage extends StatelessWidget {
     return TableRow(
       decoration: dowDecoration,
       children: List.generate(
-        visibleDays.length == 8 ? 7 : 14,
+        visibleDays.length == 15 ? 14 : 7,
         (index) => dowBuilder!(context, visibleDays[index]),
       ).toList(),
     );
   }
 
   List<TableRow> _buildCalendarDays(BuildContext context) {
-    final rowAmount = visibleDays.length == 8 ? visibleDays.length ~/ 7 : 1;
+    final rowAmount = visibleDays.length == 15 ? 1 : visibleDays.length ~/ 7;
 
     return List.generate(rowAmount, (index) => index * 7)
         .map((index) => TableRow(
               decoration: rowDecoration,
               children: List.generate(
-                visibleDays.length == 8 ? 7 : 14,
+                visibleDays.length == 15 ? 14 : 7,
                 (id) => dayBuilder(context, visibleDays[index + id]),
               ),
             ))
